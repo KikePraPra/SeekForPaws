@@ -4,10 +4,53 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React + TS</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    
+    <title>Seek for paws</title>
   </head>
-  <body>
-    <div id="root"></div>
+  <body class="bg-black grid min-h-screen grid-rows-[auto_1fr_auto]">
+    <!-- <div id="root"></div> -->
+
+    <header class="flex bg-verde-oscuro h-20 px-7 items-center z-1">
+
+      <article>
+        <figure>
+          <img class="w-27" src="./logo.svg" alt="">
+        </figure>
+      </article>
+
+    </header>
+
+    <main class="bg-white">
+      
+      <figure>
+        <img class="translate-y-[-1rem] z-0" src="img-main.jpeg" alt="">
+      </figure>
+      
+      <article class="flex items-center flex-col rounded-4xl bg-white w-full px-7 pt-10 translate-y-[-3rem] z-1">
+
+        <h1 class="text-3xl main-font text-verde-oscuro">¡Bienvenido!</h1>
+
+        <div class="flex flex-col pt-10">
+
+          <button class="pb-5.5 h-12 mb-5 w-84 rounded-2xl pt-2 bg-verde-oscuro text-white border-2 font-fredoka cursor-pointer border-verde-oscuro hover:bg-transparent hover:text-gris-oscuro">Inicia Sesión</button>
+          
+          <button class="pb-5.5 h-12 w-84 rounded-2xl pt-2 bg-transparent text-gris-oscuro border-2 font-fredoka cursor-pointer border-verde-oscuro hover:bg-verde-oscuro hover:text-white">Descripción</button>
+        </div>
+
+      </article>
+
+    </main>
+
+    <footer class="flex items-center justify-center px-7 h-20 z-1 bg-verde-oscuro">
+      <h1 class="text-white text-center">2025 Seek for Paws. Todos los derechos reservados.</h1>
+    </footer>
+
+
+
     <script type="module" src="/src/main.tsx"></script>
+
   </body>
 </html>
