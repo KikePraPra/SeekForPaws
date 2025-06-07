@@ -23,13 +23,14 @@ const cardBienvenida = {
   image: "img-main.jpeg",
   title: "¡Bienvenido!",
   buttons: [btnIniciaSesion, btnDescripcion]
-
 }
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
 
-    <Container mainCard={cardBienvenida}/>
+    <Container /* navElement='burger'*/ mainCard={cardBienvenida}/>
     
+    {/* navElement determina el botón que va a mostrarse en el header */}
+
   </StrictMode>
 )
