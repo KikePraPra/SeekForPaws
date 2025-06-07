@@ -1,6 +1,7 @@
 import type { Container } from "react-dom/client";
 import MainCard from "./MainCard";
 
+
 interface MainCardProps { //cambiar nombre
     image: string,
     title: string,
@@ -14,11 +15,6 @@ interface FormsProps{
     text?: string,
 }
 
-interface MenuProps{
-    title: string,
-    image: string,
-    text: string
-}
 
 interface MiniCardsProps{
     title: string,
@@ -59,7 +55,6 @@ interface ContainerProps{
     navElement?: string,
     mainCard?: MainCardProps
     forms?: FormsProps,
-    menu?: MenuProps,
     slider?: SliderProps,
     seeMore?: SeeMoreProps
 }

@@ -1,6 +1,7 @@
 import { useRouter } from "@tanstack/react-router";
 //clase para definir un boton - CTA
 interface ButtonProps {
+  icon?: string;
   text: string;
   style: string;
   to: string;
@@ -19,6 +20,7 @@ export default function Button(props: ButtonProps) {
   };
   return (
     <button className={props.style} onClick={handleClick}>
+      {props.icon && <img src={props.icon} alt="" className="w-20 h-20 ml-10" />}
       {props.text}
     </button>
   );
