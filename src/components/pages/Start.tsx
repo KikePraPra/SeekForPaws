@@ -7,7 +7,7 @@ const btnReportes = (
     icon="/reportes.svg"
     text="Reportes"
     style="m-5 pb-5.5 h-30 w-30 mb-5 rounded-2xl pt-2 font-fredoka border-2 border-gris-oscuro"
-    to="/"
+    to="/reports"
   />
 );
 const btnContacto = (
@@ -15,7 +15,7 @@ const btnContacto = (
     icon="/contacto.svg"
     text="Contacto"
     style="m-5 pb-5.5 h-30 w-30 mb-5 rounded-2xl pt-2 font-fredoka border-2 border-gris-oscuro"
-    to="/"
+    to="/contacto"
   />
 );
 const btnAdopcion = (
