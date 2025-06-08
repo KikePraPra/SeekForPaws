@@ -12,7 +12,10 @@
 
 import { Route as rootRoute } from './routes/__root'
 import { Route as StartImport } from './routes/start'
+import { Route as ReportsImport } from './routes/reports'
 import { Route as LoginImport } from './routes/login'
+import { Route as ContactoImport } from './routes/contacto'
+import { Route as AdoptionFormsImport } from './routes/adoptionForms'
 import { Route as AdoptionImport } from './routes/adoption'
 import { Route as IndexImport } from './routes/index'
 
@@ -24,9 +27,27 @@ const StartRoute = StartImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
+const ReportsRoute = ReportsImport.update({
+  id: '/reports',
+  path: '/reports',
+  getParentRoute: () => rootRoute,
+} as any)
+
 const LoginRoute = LoginImport.update({
   id: '/login',
   path: '/login',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const ContactoRoute = ContactoImport.update({
+  id: '/contacto',
+  path: '/contacto',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const AdoptionFormsRoute = AdoptionFormsImport.update({
+  id: '/adoptionForms',
+  path: '/adoptionForms',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -60,11 +81,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdoptionImport
       parentRoute: typeof rootRoute
     }
+    '/adoptionForms': {
+      id: '/adoptionForms'
+      path: '/adoptionForms'
+      fullPath: '/adoptionForms'
+      preLoaderRoute: typeof AdoptionFormsImport
+      parentRoute: typeof rootRoute
+    }
+    '/contacto': {
+      id: '/contacto'
+      path: '/contacto'
+      fullPath: '/contacto'
+      preLoaderRoute: typeof ContactoImport
+      parentRoute: typeof rootRoute
+    }
     '/login': {
       id: '/login'
       path: '/login'
       fullPath: '/login'
       preLoaderRoute: typeof LoginImport
+      parentRoute: typeof rootRoute
+    }
+    '/reports': {
+      id: '/reports'
+      path: '/reports'
+      fullPath: '/reports'
+      preLoaderRoute: typeof ReportsImport
       parentRoute: typeof rootRoute
     }
     '/start': {
@@ -82,14 +124,20 @@ declare module '@tanstack/react-router' {
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/adoption': typeof AdoptionRoute
+  '/adoptionForms': typeof AdoptionFormsRoute
+  '/contacto': typeof ContactoRoute
   '/login': typeof LoginRoute
+  '/reports': typeof ReportsRoute
   '/start': typeof StartRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/adoption': typeof AdoptionRoute
+  '/adoptionForms': typeof AdoptionFormsRoute
+  '/contacto': typeof ContactoRoute
   '/login': typeof LoginRoute
+  '/reports': typeof ReportsRoute
   '/start': typeof StartRoute
 }
 
@@ -97,30 +145,61 @@ export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
   '/adoption': typeof AdoptionRoute
+  '/adoptionForms': typeof AdoptionFormsRoute
+  '/contacto': typeof ContactoRoute
   '/login': typeof LoginRoute
+  '/reports': typeof ReportsRoute
   '/start': typeof StartRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/adoption' | '/login' | '/start'
+  fullPaths:
+    | '/'
+    | '/adoption'
+    | '/adoptionForms'
+    | '/contacto'
+    | '/login'
+    | '/reports'
+    | '/start'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/adoption' | '/login' | '/start'
-  id: '__root__' | '/' | '/adoption' | '/login' | '/start'
+  to:
+    | '/'
+    | '/adoption'
+    | '/adoptionForms'
+    | '/contacto'
+    | '/login'
+    | '/reports'
+    | '/start'
+  id:
+    | '__root__'
+    | '/'
+    | '/adoption'
+    | '/adoptionForms'
+    | '/contacto'
+    | '/login'
+    | '/reports'
+    | '/start'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AdoptionRoute: typeof AdoptionRoute
+  AdoptionFormsRoute: typeof AdoptionFormsRoute
+  ContactoRoute: typeof ContactoRoute
   LoginRoute: typeof LoginRoute
+  ReportsRoute: typeof ReportsRoute
   StartRoute: typeof StartRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AdoptionRoute: AdoptionRoute,
+  AdoptionFormsRoute: AdoptionFormsRoute,
+  ContactoRoute: ContactoRoute,
   LoginRoute: LoginRoute,
+  ReportsRoute: ReportsRoute,
   StartRoute: StartRoute,
 }
 
@@ -136,7 +215,10 @@ export const routeTree = rootRoute
       "children": [
         "/",
         "/adoption",
+        "/adoptionForms",
+        "/contacto",
         "/login",
+        "/reports",
         "/start"
       ]
     },
@@ -146,8 +228,17 @@ export const routeTree = rootRoute
     "/adoption": {
       "filePath": "adoption.tsx"
     },
+    "/adoptionForms": {
+      "filePath": "adoptionForms.tsx"
+    },
+    "/contacto": {
+      "filePath": "contacto.tsx"
+    },
     "/login": {
       "filePath": "login.tsx"
+    },
+    "/reports": {
+      "filePath": "reports.tsx"
     },
     "/start": {
       "filePath": "start.tsx"
