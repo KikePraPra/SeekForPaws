@@ -6,7 +6,7 @@ const btnReportes = (
   <Button
     icon="/reportes.svg"
     text="Reportes"
-    style="m-5 pb-5.5 h-40 mb-5 w-40 rounded-2xl pt-2 font-fredoka border-2 border-gris-oscuro"
+    style="m-5 pb-5.5 h-30 w-30 mb-5 rounded-2xl pt-2 font-fredoka border-2 border-gris-oscuro"
     to="/"
   />
 );
@@ -14,7 +14,7 @@ const btnContacto = (
   <Button
     icon="/contacto.svg"
     text="Contacto"
-    style="m-5 pb-5.5 h-40 mb-5 w-40 rounded-2xl pt-2 font-fredoka border-2 border-gris-oscuro"
+    style="m-5 pb-5.5 h-30 w-30 mb-5 rounded-2xl pt-2 font-fredoka border-2 border-gris-oscuro"
     to="/"
   />
 );
@@ -22,7 +22,7 @@ const btnAdopcion = (
   <Button
     icon="/adopcion.svg"
     text="Adopción"
-    style="m-5 pb-5.5 h-40 mb-5 w-40 rounded-2xl pt-2 font-fredoka border-2 border-gris-oscuro"
+    style="m-5 pb-5.5 h-30 w-30 mb-5 rounded-2xl pt-2 font-fredoka border-2 border-gris-oscuro"
     to="/adoption"
   />
 );
@@ -30,10 +30,20 @@ const btnCerrarSesion = (
   <Button
     icon="/cerrar-sesion.svg"
     text="Cerrar Sesión"
-    style="m-5 pb-5.5 h-40 mb-5 w-40 rounded-2xl pt-2 font-fredoka border-2 border-gris-oscuro"
+    style="m-5 pb-5.5 h-30 w-30 mb-5 rounded-2xl pt-2 font-fredoka border-2 border-gris-oscuro"
     to="/"
   />
 );
+
+const btnBurger = (
+  <Button
+    icon="/burger.svg"
+    text=""
+    style="w-7 h-5 translate-y-[-1.5rem]"
+    to="/"
+  />
+)
+
 /* image:string,
     title: string,
     icon: string,
@@ -45,5 +55,5 @@ const MainCard = {
 
 };
 export default function Start() {
-  return <Container /* navElement='burger'*/ mainCard={MainCard} />;
+  return <Container button={btnBurger} mainCard={MainCard} />;
 }

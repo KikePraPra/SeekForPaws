@@ -1,5 +1,6 @@
 import type { Container } from "react-dom/client";
 import MainCard from "./MainCard";
+import Form from "./Form";
 
 
 interface MainCardProps { //cambiar nombre
@@ -8,11 +9,12 @@ interface MainCardProps { //cambiar nombre
     buttons?: React.ReactNode[];
 }
 
-interface FormsProps{
+interface FormProps{
     title: string,
-    // aqui tiene que haber un array que asocie un texto con un input
+    image: string,
+    inputs?: React.ReactNode[],
     button?: React.ReactNode;
-    text?: string,
+    text?: React.ReactNode,
 }
 
 
@@ -52,28 +54,22 @@ interface SeeMoreProps{
 
 
 interface ContainerProps{
-    navElement?: string,
+    button?: React.ReactNode,
     mainCard?: MainCardProps
-    forms?: FormsProps,
+    form?: FormProps,
     slider?: SliderProps,
     seeMore?: SeeMoreProps
 }
 
 export default function Container(props: ContainerProps) {
 
-    if (!props.mainCard) return null;
-    // if (!props.forms) return null;
-    // if (!props.menu) return null;
-    // if (!props.slider) return null;
-    // if (!props.seeMore) return null;
-
     let pageContent;
 
 
 if (props.mainCard) {
     pageContent = <MainCard {...props.mainCard} />;
-// } else if (props.forms) {
-//     pageContent = <Forms {...props.forms} />;
+} else if (props.form) {
+    pageContent = <Form {...props.form} />;
 // } else if (props.menu) {
 //     pageContent = <Menu {...props.menu} />;
 // } else if (props.slider) {
@@ -81,28 +77,16 @@ if (props.mainCard) {
 // } else if (props.seeMore) {
 //     pageContent = <SeeMore {...props.seeMore} />;
 } else {
-    pageContent = <div className="text-gray-500 text-center">No hay contenido disponible</div>;
+    return null;
 }
 
 
 // Todo lo comentado es para el futuro, en caso de que se utilice la idea propuesta
 
-
-
-
     let navElement = "";
-    let navImage = "";
 
-    switch(props.navElement){
-        case "burger":
-            navImage = "./burger.svg";
-            break;
-        case "back":
-            navImage = "./back.svg";
-            break;
-        default:
-            navElement = 'none';
-            break;
+    if(!props.button){
+        navElement = 'none';
     }
 
     return (
@@ -117,7 +101,7 @@ if (props.mainCard) {
                     <figure>
 
                         <div className={`${navElement}`}>
-                            <img src={navImage} alt="" />
+                            {props.button ? props.button : ""}
                         </div>
                         
                     </figure>
@@ -128,8 +112,6 @@ if (props.mainCard) {
             {/* <MainCard {...props.mainCard} /> */}
 
             {pageContent}
-
-            
 
             <footer className="flex items-center justify-center px-7 h-20 z-1 bg-verde-oscuro">
                 <h1 className="text-white text-center">2025 Seek for Paws. Todos los derechos reservados.</h1>

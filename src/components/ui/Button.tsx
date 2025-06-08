@@ -4,7 +4,7 @@ interface ButtonProps {
   icon?: string;
   text: string;
   style: string;
-  to: string;
+  to?: string;
   onClick?: () => void;
 }
 export default function Button(props: ButtonProps) {
@@ -20,7 +20,7 @@ export default function Button(props: ButtonProps) {
   };
   return (
     <button className={props.style} onClick={handleClick}>
-      {props.icon && <img src={props.icon} alt="" className="w-20 h-20 ml-10" />}
+      {props.icon && <img src={props.icon} alt="" className="w-15 h-18 m-auto" />}
       {props.text}
     </button>
   );
