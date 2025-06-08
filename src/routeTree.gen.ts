@@ -11,8 +11,10 @@
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
+import { Route as SupportImport } from './routes/support'
 import { Route as StartImport } from './routes/start'
 import { Route as ReportsImport } from './routes/reports'
+import { Route as ReportFormsImport } from './routes/reportForms'
 import { Route as LoginImport } from './routes/login'
 import { Route as FormImport } from './routes/form'
 import { Route as ContactoImport } from './routes/contacto'
@@ -24,6 +26,12 @@ import { Route as IndexImport } from './routes/index'
 
 // Create/Update Routes
 
+const SupportRoute = SupportImport.update({
+  id: '/support',
+  path: '/support',
+  getParentRoute: () => rootRoute,
+} as any)
+
 const StartRoute = StartImport.update({
   id: '/start',
   path: '/start',
@@ -33,6 +41,12 @@ const StartRoute = StartImport.update({
 const ReportsRoute = ReportsImport.update({
   id: '/reports',
   path: '/reports',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const ReportFormsRoute = ReportFormsImport.update({
+  id: '/reportForms',
+  path: '/reportForms',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -144,6 +158,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LoginImport
       parentRoute: typeof rootRoute
     }
+    '/reportForms': {
+      id: '/reportForms'
+      path: '/reportForms'
+      fullPath: '/reportForms'
+      preLoaderRoute: typeof ReportFormsImport
+      parentRoute: typeof rootRoute
+    }
     '/reports': {
       id: '/reports'
       path: '/reports'
@@ -156,6 +177,13 @@ declare module '@tanstack/react-router' {
       path: '/start'
       fullPath: '/start'
       preLoaderRoute: typeof StartImport
+      parentRoute: typeof rootRoute
+    }
+    '/support': {
+      id: '/support'
+      path: '/support'
+      fullPath: '/support'
+      preLoaderRoute: typeof SupportImport
       parentRoute: typeof rootRoute
     }
   }
@@ -172,8 +200,10 @@ export interface FileRoutesByFullPath {
   '/contacto': typeof ContactoRoute
   '/form': typeof FormRoute
   '/login': typeof LoginRoute
+  '/reportForms': typeof ReportFormsRoute
   '/reports': typeof ReportsRoute
   '/start': typeof StartRoute
+  '/support': typeof SupportRoute
 }
 
 export interface FileRoutesByTo {
@@ -185,8 +215,10 @@ export interface FileRoutesByTo {
   '/contacto': typeof ContactoRoute
   '/form': typeof FormRoute
   '/login': typeof LoginRoute
+  '/reportForms': typeof ReportFormsRoute
   '/reports': typeof ReportsRoute
   '/start': typeof StartRoute
+  '/support': typeof SupportRoute
 }
 
 export interface FileRoutesById {
@@ -199,8 +231,10 @@ export interface FileRoutesById {
   '/contacto': typeof ContactoRoute
   '/form': typeof FormRoute
   '/login': typeof LoginRoute
+  '/reportForms': typeof ReportFormsRoute
   '/reports': typeof ReportsRoute
   '/start': typeof StartRoute
+  '/support': typeof SupportRoute
 }
 
 export interface FileRouteTypes {
@@ -214,8 +248,10 @@ export interface FileRouteTypes {
     | '/contacto'
     | '/form'
     | '/login'
+    | '/reportForms'
     | '/reports'
     | '/start'
+    | '/support'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -226,8 +262,10 @@ export interface FileRouteTypes {
     | '/contacto'
     | '/form'
     | '/login'
+    | '/reportForms'
     | '/reports'
     | '/start'
+    | '/support'
   id:
     | '__root__'
     | '/'
@@ -238,8 +276,10 @@ export interface FileRouteTypes {
     | '/contacto'
     | '/form'
     | '/login'
+    | '/reportForms'
     | '/reports'
     | '/start'
+    | '/support'
   fileRoutesById: FileRoutesById
 }
 
@@ -252,8 +292,10 @@ export interface RootRouteChildren {
   ContactoRoute: typeof ContactoRoute
   FormRoute: typeof FormRoute
   LoginRoute: typeof LoginRoute
+  ReportFormsRoute: typeof ReportFormsRoute
   ReportsRoute: typeof ReportsRoute
   StartRoute: typeof StartRoute
+  SupportRoute: typeof SupportRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
@@ -265,8 +307,10 @@ const rootRouteChildren: RootRouteChildren = {
   ContactoRoute: ContactoRoute,
   FormRoute: FormRoute,
   LoginRoute: LoginRoute,
+  ReportFormsRoute: ReportFormsRoute,
   ReportsRoute: ReportsRoute,
   StartRoute: StartRoute,
+  SupportRoute: SupportRoute,
 }
 
 export const routeTree = rootRoute
@@ -287,8 +331,10 @@ export const routeTree = rootRoute
         "/contacto",
         "/form",
         "/login",
+        "/reportForms",
         "/reports",
-        "/start"
+        "/start",
+        "/support"
       ]
     },
     "/": {
@@ -315,11 +361,17 @@ export const routeTree = rootRoute
     "/login": {
       "filePath": "login.tsx"
     },
+    "/reportForms": {
+      "filePath": "reportForms.tsx"
+    },
     "/reports": {
       "filePath": "reports.tsx"
     },
     "/start": {
       "filePath": "start.tsx"
+    },
+    "/support": {
+      "filePath": "support.tsx"
     }
   }
 }
