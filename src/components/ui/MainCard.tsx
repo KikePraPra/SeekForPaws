@@ -3,7 +3,8 @@ import React from "react";
 interface MainCardProps {
   image: string,
   title: string,
-  buttons?: React.ReactNode[];
+  buttons?: React.ReactNode[],
+  text?: string;
 }
 
 export default function MainCard(props: MainCardProps) {
@@ -27,13 +28,15 @@ export default function MainCard(props: MainCardProps) {
 
             <div className={`${style}`}>
 
+            {props.text ? <p className="font-poppins w-5/6 mb-10 m-auto">{props.text}</p> : ""}
+
             {props.buttons && props.buttons[0] ? props.buttons[0] : ""}
             {props.buttons && props.buttons[1] ? props.buttons[1] : ""} 
             {props.buttons && props.buttons[2] ? props.buttons[2] : ""}
             {props.buttons && props.buttons[3] ? props.buttons[3] : ""}
             {/* espero esa vara sirva */}
 
-              
+
             </div>
 
           </article>

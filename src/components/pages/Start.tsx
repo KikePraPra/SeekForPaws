@@ -52,8 +52,8 @@ const MainCard = {
   image: "img-main.jpeg",
   title: "Inicio",
   buttons: [btnReportes, btnContacto,btnAdopcion, btnCerrarSesion],
-
 };
+
 export default function Start() {
   return <Container button={btnBurger} mainCard={MainCard} />;
 }

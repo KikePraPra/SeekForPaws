@@ -22,8 +22,8 @@ const inputMeetingPlace = (
   <Input
     label="Lugar de reunión:"
     name="meetingPlace"
-    type="text"
-    isLocationSelector
+    type="location"
+    // isLocationSelector
   />
 );
 
@@ -40,8 +40,8 @@ const inputAdditionalInfo = (
   <Input
     label="Datos adicionales:"
     name="additionalInfo"
-    type="text"
-    isTextArea
+    type="textArea"
+    // isTextArea
   />
 );
 
