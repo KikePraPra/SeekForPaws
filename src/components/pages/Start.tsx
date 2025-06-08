@@ -1,6 +1,6 @@
 import Button from "../ui/Button";
+import BurgerMenu from "../ui/BurgerMenu";
 import Container from "../ui/Container";
-
 
 const btnReportes = (
   <Button
@@ -35,25 +35,12 @@ const btnCerrarSesion = (
   />
 );
 
-const btnBurger = (
-  <Button
-    icon="/burger.svg"
-    text=""
-    style="w-7 h-5 translate-y-[-1.5rem]"
-    to="/"
-  />
-)
-
-/* image:string,
-    title: string,
-    icon: string,
-    text: string*/ 
 const MainCard = {
   image: "img-main.jpeg",
   title: "Inicio",
-  buttons: [btnReportes, btnContacto,btnAdopcion, btnCerrarSesion],
+  buttons: [btnReportes, btnContacto, btnAdopcion, btnCerrarSesion],
 };
 
 export default function Start() {
-  return <Container button={btnBurger} mainCard={MainCard} />;
+  return <Container button={<BurgerMenu />} mainCard={MainCard} />;
 }

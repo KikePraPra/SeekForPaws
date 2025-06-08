@@ -16,6 +16,7 @@ import { Route as ReportsImport } from './routes/reports'
 import { Route as LoginImport } from './routes/login'
 import { Route as FormImport } from './routes/form'
 import { Route as ContactoImport } from './routes/contacto'
+import { Route as ComplaintsImport } from './routes/complaints'
 import { Route as AdoptionFormsImport } from './routes/adoptionForms'
 import { Route as AdoptionImport } from './routes/adoption'
 import { Route as AboutUsImport } from './routes/aboutUs'
@@ -50,6 +51,12 @@ const FormRoute = FormImport.update({
 const ContactoRoute = ContactoImport.update({
   id: '/contacto',
   path: '/contacto',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const ComplaintsRoute = ComplaintsImport.update({
+  id: '/complaints',
+  path: '/complaints',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -109,6 +116,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdoptionFormsImport
       parentRoute: typeof rootRoute
     }
+    '/complaints': {
+      id: '/complaints'
+      path: '/complaints'
+      fullPath: '/complaints'
+      preLoaderRoute: typeof ComplaintsImport
+      parentRoute: typeof rootRoute
+    }
     '/contacto': {
       id: '/contacto'
       path: '/contacto'
@@ -154,6 +168,7 @@ export interface FileRoutesByFullPath {
   '/aboutUs': typeof AboutUsRoute
   '/adoption': typeof AdoptionRoute
   '/adoptionForms': typeof AdoptionFormsRoute
+  '/complaints': typeof ComplaintsRoute
   '/contacto': typeof ContactoRoute
   '/form': typeof FormRoute
   '/login': typeof LoginRoute
@@ -166,6 +181,7 @@ export interface FileRoutesByTo {
   '/aboutUs': typeof AboutUsRoute
   '/adoption': typeof AdoptionRoute
   '/adoptionForms': typeof AdoptionFormsRoute
+  '/complaints': typeof ComplaintsRoute
   '/contacto': typeof ContactoRoute
   '/form': typeof FormRoute
   '/login': typeof LoginRoute
@@ -179,6 +195,7 @@ export interface FileRoutesById {
   '/aboutUs': typeof AboutUsRoute
   '/adoption': typeof AdoptionRoute
   '/adoptionForms': typeof AdoptionFormsRoute
+  '/complaints': typeof ComplaintsRoute
   '/contacto': typeof ContactoRoute
   '/form': typeof FormRoute
   '/login': typeof LoginRoute
@@ -193,6 +210,7 @@ export interface FileRouteTypes {
     | '/aboutUs'
     | '/adoption'
     | '/adoptionForms'
+    | '/complaints'
     | '/contacto'
     | '/form'
     | '/login'
@@ -204,6 +222,7 @@ export interface FileRouteTypes {
     | '/aboutUs'
     | '/adoption'
     | '/adoptionForms'
+    | '/complaints'
     | '/contacto'
     | '/form'
     | '/login'
@@ -215,6 +234,7 @@ export interface FileRouteTypes {
     | '/aboutUs'
     | '/adoption'
     | '/adoptionForms'
+    | '/complaints'
     | '/contacto'
     | '/form'
     | '/login'
@@ -228,6 +248,7 @@ export interface RootRouteChildren {
   AboutUsRoute: typeof AboutUsRoute
   AdoptionRoute: typeof AdoptionRoute
   AdoptionFormsRoute: typeof AdoptionFormsRoute
+  ComplaintsRoute: typeof ComplaintsRoute
   ContactoRoute: typeof ContactoRoute
   FormRoute: typeof FormRoute
   LoginRoute: typeof LoginRoute
@@ -240,6 +261,7 @@ const rootRouteChildren: RootRouteChildren = {
   AboutUsRoute: AboutUsRoute,
   AdoptionRoute: AdoptionRoute,
   AdoptionFormsRoute: AdoptionFormsRoute,
+  ComplaintsRoute: ComplaintsRoute,
   ContactoRoute: ContactoRoute,
   FormRoute: FormRoute,
   LoginRoute: LoginRoute,
@@ -261,6 +283,7 @@ export const routeTree = rootRoute
         "/aboutUs",
         "/adoption",
         "/adoptionForms",
+        "/complaints",
         "/contacto",
         "/form",
         "/login",
@@ -279,6 +302,9 @@ export const routeTree = rootRoute
     },
     "/adoptionForms": {
       "filePath": "adoptionForms.tsx"
+    },
+    "/complaints": {
+      "filePath": "complaints.tsx"
     },
     "/contacto": {
       "filePath": "contacto.tsx"

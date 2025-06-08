@@ -1,4 +1,5 @@
 import Button from "../ui/Button";
+import BurgerMenu from "../ui/BurgerMenu";
 import Container from "../ui/Container";
 
 const btnRegistrarAdopcion = (
@@ -23,15 +24,6 @@ const cardAdoption = {
   buttons: [btnRegistrarAdopcion, btnMascotasAdopcion],
 };
 
-const btnBurger = (
-  <Button
-    icon="/burger.svg"
-    text=""
-    style="w-7 h-5 translate-y-[-1.5rem]"
-    onClick={() => history.back()}
-  />
-);
-
 export default function Adoption() {
-  return <Container button={btnBurger} mainCard={cardAdoption} />;
+  return <Container button={<BurgerMenu />} mainCard={cardAdoption} />;
 }
