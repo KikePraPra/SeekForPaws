@@ -3,7 +3,7 @@ import { useRouter } from "@tanstack/react-router";
 
 const menuItems = [
   {
-    path: "/logout",
+    path: "/",
     label: "Cerrar sesión",
     icon: "/logout.png",
     alt: "Cerrar sesión",
