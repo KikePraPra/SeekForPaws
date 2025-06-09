@@ -8,11 +8,12 @@ interface MiniCardsProps {
   lastPlace: string;
   date: string;
   buttons?: React.ReactNode[];
+   
 }
 
 export default function MiniCards(props: MiniCardsProps) {
   return (
-    <main className="relative m-20">
+    <main className="relative m-20 flex items-center justify-center">
       <section className="bg-white rounded-3xl border border-gray-200 p-4 max-w-sm w-full mx-auto pt-32">
         <figure className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full max-w-sm h-48 rounded-2xl overflow-hidden shadow-md z-10">
           <img

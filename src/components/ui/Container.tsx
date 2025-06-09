@@ -1,9 +1,8 @@
 import type { Container } from "react-dom/client";
 import MainCard from "./MainCard";
 import Form from "./Form";
-import Slider from "./Slider";
 
-import MiniCards from "./MiniCards";
+
 
 interface MainCardProps { //cambiar nombre
     image: string,
@@ -36,11 +35,11 @@ interface  SliderProps {
 }
 
 
-interface FilterProps{
+/*interface FilterProps{
     // un placeholder que se pueda activar
     text: string[],
     // campos de texto que se pueden activar
-}
+}*/
 
 
 interface SeeMoreProps{
@@ -78,8 +77,6 @@ if (props.mainCard) {
     pageContent = <Form {...props.form} />;
 // } else if (props.menu) {
 //     pageContent = <Menu {...props.menu} />;
-} else if (props.slider) {
-    pageContent = <Slider {...props.slider} />;
 } else {
     return null;
 }
