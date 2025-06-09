@@ -31,7 +31,7 @@ export default function MainCard(props: MainCardProps) {
   }
   if (props.miniCards && props.miniCards.length > 0) {
     contentSlider = (
-      <section className="pt-12 flex flex-wrap justify-center gap-10">
+      <section className="pt-12 flex flex-wrap justify-center gap-4">
         {props.miniCards.map((card, index) => (
           <MiniCards key={index} {...card} />
         ))}
@@ -58,7 +58,7 @@ export default function MainCard(props: MainCardProps) {
           ) : (
             ""
           )}
-          <div className="justify-center">{contentSlider}</div>
+   {contentSlider}
 
           {/* Renderizar botones */}
           {props.buttons && props.buttons[0] ? props.buttons[0] : ""}

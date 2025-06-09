@@ -27,12 +27,6 @@ interface MiniCardsProps {
   buttons?: React.ReactNode[];
 }
 
-interface  SliderProps {
-  image: string;
-  title: string;
-  text?: string;
-  miniCards?: MiniCardsProps[];
-}
 
 
 /*interface FilterProps{
@@ -61,7 +55,6 @@ interface ContainerProps{
     button?: React.ReactNode,
     mainCard?: MainCardProps
     form?: FormProps,
-    slider?: SliderProps,
     miniCards?: MiniCardsProps[],
     seeMore?: SeeMoreProps
 }
