@@ -12,7 +12,7 @@ const miniCardsList = [
     buttons: [
       <Button
         text="Ver más"
-        style="pb-5.5 h-12 w-80 rounded-2xl pt-2 bg-transparent text-gris-oscuro border-2 font-fredoka cursor-pointer border-verde-oscuro hover:bg-verde-oscuro hover:text-white duration-400"
+        style="pb-5.5   h-12 w-60 rounded-2xl pt-2 bg-transparent text-gris-oscuro border-2 font-fredoka cursor-pointer border-verde-oscuro hover:bg-verde-oscuro hover:text-white duration-400"
         to="/detalle-reporte/1"
       />
     ]
@@ -26,7 +26,7 @@ const miniCardsList = [
     buttons: [
       <Button
         text="Ver más"
-        style="pb-5.5 h-12 w-80 rounded-2xl pt-2 bg-transparent text-gris-oscuro border-2 font-fredoka cursor-pointer border-verde-oscuro bg-verde-oscuro text-white duration-400 hover:bg-transparent hover:text-gris-oscuro"
+        style="pb-5.5 h-12 w-60 rounded-2xl pt-2 bg-transparent text-gris-oscuro border-2 font-fredoka cursor-pointer border-verde-oscuro bg-verde-oscuro text-white duration-400 hover:bg-transparent hover:text-gris-oscuro"
         to="/detalle-reporte/2"
       />
     ]
