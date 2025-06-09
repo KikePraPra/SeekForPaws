@@ -2,7 +2,7 @@ import Button from "../ui/Button";
 import BurgerMenu from "../ui/BurgerMenu";
 import Container from "../ui/Container";
 
-const btnReportes = (
+const btnReports = (
   <Button
     icon="/reportes.svg"
     text="Reportes"
@@ -10,7 +10,7 @@ const btnReportes = (
     to="/reports"
   />
 );
-const btnContacto = (
+const btnContact = (
   <Button
     icon="/contacto.svg"
     text="Contacto"
@@ -18,7 +18,7 @@ const btnContacto = (
     to="/contacto"
   />
 );
-const btnAdopcion = (
+const btnAdoption = (
   <Button
     icon="/adopcion.svg"
     text="Adopción"
@@ -26,7 +26,7 @@ const btnAdopcion = (
     to="/adoption"
   />
 );
-const btnCerrarSesion = (
+const btnCloseSession = (
   <Button
     icon="/cerrar-sesion.svg"
     text="Cerrar Sesión"
@@ -38,7 +38,7 @@ const btnCerrarSesion = (
 const MainCard = {
   image: "img-main.jpeg",
   title: "Inicio",
-  buttons: [btnReportes, btnContacto, btnAdopcion, btnCerrarSesion],
+  buttons: [btnReports, btnContact, btnAdoption, btnCloseSession],
 };
 
 export default function Start() {

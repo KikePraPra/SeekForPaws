@@ -62,11 +62,11 @@ const btnBack = (
   <Button
     icon="/back.svg"
     text=""
-    style="w-7 h-5 translate-y-[-1.5rem]"
+   style="w-7 h-5 translate-y-[-2rem] absolute right-7"
     onClick={() => history.back()}
   />
 );
 
-export default function Login() {
+export default function AdoptionForms() {
   return <Container button={btnBack} form={adoptionForms} />;
 }

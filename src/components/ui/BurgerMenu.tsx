@@ -33,7 +33,8 @@ export default function BurgerMenu() {
       {/*boton hamburguesa y close*/}
       <button
         onClick={toggleMenu}
-        className="flex items-center focus:outline-none z-[100]"
+      className="flex items-center absolute right-7 translate-y-[-1rem] focus:outline-none z-[100]"
+
         aria-label="toggle menu"
       >
         <img src={open ? "/close.png" : "/burger.svg"} alt="menu icon" />

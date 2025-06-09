@@ -1,7 +1,9 @@
 import type { Container } from "react-dom/client";
 import MainCard from "./MainCard";
 import Form from "./Form";
+import Slider from "./Slider";
 
+import MiniCards from "./MiniCards";
 
 interface MainCardProps { //cambiar nombre
     image: string,
@@ -16,15 +18,23 @@ interface FormProps{
     button?: React.ReactNode;
     text?: React.ReactNode,
 }
-
-
-interface MiniCardsProps{
-    title: string,
-    image: string,
-    text: string,
-    lastPlace: string,
-    date: string
+interface MiniCardsProps {
+    
+  name: string;
+  image: string;
+  text: string;
+  lastPlace: string;
+  date: string;
+  buttons?: React.ReactNode[];
 }
+
+interface  SliderProps {
+  image: string;
+  title: string;
+  text?: string;
+  miniCards?: MiniCardsProps[];
+}
+
 
 interface FilterProps{
     // un placeholder que se pueda activar
@@ -32,11 +42,6 @@ interface FilterProps{
     // campos de texto que se pueden activar
 }
 
-interface SliderProps{ //maincard
-    titlte: string,
-    filter?: FilterProps,
-    miniCards?: MiniCardsProps[]
-}
 
 interface SeeMoreProps{
     title: string,
@@ -58,6 +63,7 @@ interface ContainerProps{
     mainCard?: MainCardProps
     form?: FormProps,
     slider?: SliderProps,
+    miniCards?: MiniCardsProps[],
     seeMore?: SeeMoreProps
 }
 
@@ -72,10 +78,8 @@ if (props.mainCard) {
     pageContent = <Form {...props.form} />;
 // } else if (props.menu) {
 //     pageContent = <Menu {...props.menu} />;
-// } else if (props.slider) {
-//     pageContent = <Slider {...props.slider} />;
-// } else if (props.seeMore) {
-//     pageContent = <SeeMore {...props.seeMore} />;
+} else if (props.slider) {
+    pageContent = <Slider {...props.slider} />;
 } else {
     return null;
 }
@@ -94,7 +98,8 @@ if (props.mainCard) {
 
             <header className="flex bg-verde-oscuro h-20 px-7 items-center z-1">
 
-                <article className="flex align-middle gap-48 items-center">
+               <article className="flex align-middle items-center">
+
                     <figure>
                         <img className="w-27" src="./logo.svg" alt=""/>
                     </figure>

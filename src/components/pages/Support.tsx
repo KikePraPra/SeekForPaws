@@ -19,7 +19,7 @@ const inputComplaints = (
   />
 );
 
-const complaintsCard = {
+const SupportCard = {
   image: "img-main.jpeg",
   title: "Contáctanos",
   inputs: [inputComplaints],
@@ -32,11 +32,11 @@ const btnBack = (
   <Button
     icon="/back.svg"
     text=""
-    style="w-7 h-5 translate-y-[-1.5rem]"
+   style="w-7 h-5 translate-y-[-2rem] absolute right-7"
     onClick={() => history.back()}
   />
 );
 
-export default function Login() {
-  return <Container button={btnBack} form={complaintsCard} />;
+export default function Support() {
+  return <Container button={btnBack} form={SupportCard} />;
 }
