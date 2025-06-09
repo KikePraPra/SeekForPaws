@@ -41,5 +41,5 @@ const sliderProps = {
 };
 
 export default function ReportList() {
-  return <Container button={<BurgerMenu />} slider={sliderProps} />;
+  return <Container button={<BurgerMenu />} mainCard={sliderProps} />;
 }
