@@ -14,7 +14,7 @@ const btnViewReports = (
   <Button
     text="Ver Reportes"
     style="pb-5.5 h-12 w-80 rounded-2xl pt-2 bg-transparent text-gris-oscuro border-2 font-fredoka cursor-pointer border-verde-oscuro hover:bg-verde-oscuro hover:text-white duration-400"
-    to="/"
+    to="/ReportsList"
   />
 );
 
@@ -24,6 +24,6 @@ const cardReports = {
   buttons: [btnRegisterReport, btnViewReports],
 };
 
-export default function Adoption() {
+export default function Reports() {
   return <Container button={<BurgerMenu />} mainCard={cardReports} />;
 }

@@ -105,7 +105,7 @@ export default function Input(props: InputProps) {
             <img src={props.icon} alt="icon" className="mr-2 w-7 h-7" />
           )}
           <span>Adjuntar imagen</span>
-          <input name={props.name} type="file" className="hidden" />
+          <input id={props.name} name={props.name} type="file" className="hidden" />
         </label>
       );
       break;

@@ -18,12 +18,12 @@ const btnSupport = (
   />
 );
 
-const cardBienvenida = {
+const cardContacto = {
   image: "img-main.jpeg",
   title: "Contacto",
   buttons: [btnComplaints, btnSupport],
 };
 
-export default function Adoption() {
-  return <Container button={<BurgerMenu />} mainCard={cardBienvenida} />;
+export default function Contacto() {
+  return <Container button={<BurgerMenu />} mainCard={cardContacto} />;
 }

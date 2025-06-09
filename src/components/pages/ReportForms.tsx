@@ -39,7 +39,7 @@ const inputAdditionalInfo = (
   <Input label="Datos adicionales:" name="additionalInfo" type="textArea" />
 );
 
-const adoptionForms = {
+const reportForms = {
   title: "Reportes",
   image: "img-main.jpeg",
   inputs: [
@@ -57,11 +57,11 @@ const btnBack = (
   <Button
     icon="/back.svg"
     text=""
-    style="w-7 h-5 translate-y-[-1.5rem]"
+    style="w-7 h-5 translate-y-[-2rem] absolute right-7"
     onClick={() => history.back()}
   />
 );
 
-export default function Login() {
-  return <Container button={btnBack} form={adoptionForms} />;
+export default function ReportForms() {
+  return <Container button={btnBack} form={reportForms} />;
 }
