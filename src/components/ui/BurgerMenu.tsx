@@ -14,7 +14,11 @@ const menuItems = [
     icon: "/change_account.png",
     alt: "Cambiar cuenta",
   },
-  { path: "/start", label: "Inicio", icon: "/home.png", alt: "Inicio" },
+  { path: "/start",
+    label: "Inicio",
+    icon: "/home.png",
+    alt: "Inicio" 
+  }
 ];
 
 export default function BurgerMenu() {

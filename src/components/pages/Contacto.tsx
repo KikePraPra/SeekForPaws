@@ -1,5 +1,4 @@
 import Button from "../ui/Button";
-import BurgerMenu from "../ui/BurgerMenu";
 import Container from "../ui/Container";
 
 const btnComplaints = (
@@ -20,10 +19,19 @@ const btnSupport = (
 
 const cardContacto = {
   image: "img-main.jpeg",
-  title: "Contacto",
+  title: "Contáctanos",
   buttons: [btnComplaints, btnSupport],
 };
 
+const btnBack = (
+  <Button
+    icon="/back.svg"
+    text=""
+    style="w-7 h-5 translate-y-[-2rem] absolute right-7"
+    onClick={() => history.back()}
+  />
+);
+
 export default function Contacto() {
-  return <Container button={<BurgerMenu />} mainCard={cardContacto} />;
+  return <Container button={btnBack} mainCard={cardContacto} />;
 }

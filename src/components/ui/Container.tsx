@@ -1,8 +1,7 @@
 import type { Container } from "react-dom/client";
 import MainCard from "./MainCard";
 import Form from "./Form";
-
-
+import DetailedCard from "./DetailedCard";
 
 interface MainCardProps { //cambiar nombre
     image: string,
@@ -27,55 +26,47 @@ interface MiniCardsProps {
   buttons?: React.ReactNode[];
 }
 
-
-
 /*interface FilterProps{
     // un placeholder que se pueda activar
     text: string[],
     // campos de texto que se pueden activar
 }*/
 
-
-interface SeeMoreProps{
-    title: string,
-    date: string,
-    image: string,
-    profilePic: string,
-    state: string,
-    lastPlace: string,
-    phone: string
-    description: string
-    buttons?: React.ReactNode[]
+interface DetailedCardProps {
+  name: string,
+  image: string,
+  profilePic: string,
+  profileName: string,
+  phone: string,
+  state: string,
+  lastPlace: string,
+  description: string,
+  date: string,
+  buttons?: React.ReactNode[];
 }
-
-// todas estas interfaces son ideas correspondientes a componentes aún no creados
-
 
 interface ContainerProps{
     button?: React.ReactNode,
     mainCard?: MainCardProps
     form?: FormProps,
     miniCards?: MiniCardsProps[],
-    seeMore?: SeeMoreProps
+    detailedCard?: DetailedCardProps;
 }
 
 export default function Container(props: ContainerProps) {
 
     let pageContent;
 
-
 if (props.mainCard) {
     pageContent = <MainCard {...props.mainCard} />;
 } else if (props.form) {
     pageContent = <Form {...props.form} />;
-// } else if (props.menu) {
-//     pageContent = <Menu {...props.menu} />;
+} else if (props.detailedCard) {
+    pageContent = <DetailedCard {...props.detailedCard} />;
 } else {
-    return null;
+    pageContent = <div className="bg-white">hola</div>
+    // return null
 }
-
-
-// Todo lo comentado es para el futuro, en caso de que se utilice la idea propuesta
 
     let navElement = "";
 
@@ -104,14 +95,11 @@ if (props.mainCard) {
 
             </header>
 
-            {/* <MainCard {...props.mainCard} /> */}
-
             {pageContent}
 
             <footer className="flex items-center justify-center px-7 h-20 z-1 bg-verde-oscuro">
                 <h1 className="text-white text-center">2025 Seek for Paws. Todos los derechos reservados.</h1>
             </footer>
-
 
         </div>
     )

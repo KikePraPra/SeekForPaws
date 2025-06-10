@@ -15,7 +15,6 @@ const inputComplaints = (
     label="Redacte su inquietud:"
     name="additionalInfo"
     type="textArea"
-    // isTextArea
   />
 );
 

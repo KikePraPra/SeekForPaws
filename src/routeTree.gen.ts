@@ -13,6 +13,7 @@
 import { Route as rootRoute } from './routes/__root'
 import { Route as SupportImport } from './routes/support'
 import { Route as StartImport } from './routes/start'
+import { Route as SeeMoreImport } from './routes/seeMore'
 import { Route as ReportsListImport } from './routes/reportsList'
 import { Route as ReportsImport } from './routes/reports'
 import { Route as ReportFormsImport } from './routes/reportForms'
@@ -36,6 +37,12 @@ const SupportRoute = SupportImport.update({
 const StartRoute = StartImport.update({
   id: '/start',
   path: '/start',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const SeeMoreRoute = SeeMoreImport.update({
+  id: '/seeMore',
+  path: '/seeMore',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -186,6 +193,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ReportsListImport
       parentRoute: typeof rootRoute
     }
+    '/seeMore': {
+      id: '/seeMore'
+      path: '/seeMore'
+      fullPath: '/seeMore'
+      preLoaderRoute: typeof SeeMoreImport
+      parentRoute: typeof rootRoute
+    }
     '/start': {
       id: '/start'
       path: '/start'
@@ -217,6 +231,7 @@ export interface FileRoutesByFullPath {
   '/reportForms': typeof ReportFormsRoute
   '/reports': typeof ReportsRoute
   '/reportsList': typeof ReportsListRoute
+  '/seeMore': typeof SeeMoreRoute
   '/start': typeof StartRoute
   '/support': typeof SupportRoute
 }
@@ -233,6 +248,7 @@ export interface FileRoutesByTo {
   '/reportForms': typeof ReportFormsRoute
   '/reports': typeof ReportsRoute
   '/reportsList': typeof ReportsListRoute
+  '/seeMore': typeof SeeMoreRoute
   '/start': typeof StartRoute
   '/support': typeof SupportRoute
 }
@@ -250,6 +266,7 @@ export interface FileRoutesById {
   '/reportForms': typeof ReportFormsRoute
   '/reports': typeof ReportsRoute
   '/reportsList': typeof ReportsListRoute
+  '/seeMore': typeof SeeMoreRoute
   '/start': typeof StartRoute
   '/support': typeof SupportRoute
 }
@@ -268,6 +285,7 @@ export interface FileRouteTypes {
     | '/reportForms'
     | '/reports'
     | '/reportsList'
+    | '/seeMore'
     | '/start'
     | '/support'
   fileRoutesByTo: FileRoutesByTo
@@ -283,6 +301,7 @@ export interface FileRouteTypes {
     | '/reportForms'
     | '/reports'
     | '/reportsList'
+    | '/seeMore'
     | '/start'
     | '/support'
   id:
@@ -298,6 +317,7 @@ export interface FileRouteTypes {
     | '/reportForms'
     | '/reports'
     | '/reportsList'
+    | '/seeMore'
     | '/start'
     | '/support'
   fileRoutesById: FileRoutesById
@@ -315,6 +335,7 @@ export interface RootRouteChildren {
   ReportFormsRoute: typeof ReportFormsRoute
   ReportsRoute: typeof ReportsRoute
   ReportsListRoute: typeof ReportsListRoute
+  SeeMoreRoute: typeof SeeMoreRoute
   StartRoute: typeof StartRoute
   SupportRoute: typeof SupportRoute
 }
@@ -331,6 +352,7 @@ const rootRouteChildren: RootRouteChildren = {
   ReportFormsRoute: ReportFormsRoute,
   ReportsRoute: ReportsRoute,
   ReportsListRoute: ReportsListRoute,
+  SeeMoreRoute: SeeMoreRoute,
   StartRoute: StartRoute,
   SupportRoute: SupportRoute,
 }
@@ -356,6 +378,7 @@ export const routeTree = rootRoute
         "/reportForms",
         "/reports",
         "/reportsList",
+        "/seeMore",
         "/start",
         "/support"
       ]
@@ -392,6 +415,9 @@ export const routeTree = rootRoute
     },
     "/reportsList": {
       "filePath": "reportsList.tsx"
+    },
+    "/seeMore": {
+      "filePath": "seeMore.tsx"
     },
     "/start": {
       "filePath": "start.tsx"

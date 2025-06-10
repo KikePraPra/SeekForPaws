@@ -4,8 +4,8 @@ interface FormProps{
     title: string,
     image: string,
     inputs?: React.ReactNode[],
-    button?: React.ReactNode;
-    text?: React.ReactNode,
+    button?: React.ReactNode,
+    text?: React.ReactNode;
 }
 
 export default function Form(props: FormProps) {

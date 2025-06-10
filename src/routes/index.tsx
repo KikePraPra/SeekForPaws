@@ -30,5 +30,5 @@ const cardBienvenida = {
 };
 
 function RouteComponent() {
-  return <Container /* navElement='burger'*/ mainCard={cardBienvenida} />;
+  return <Container mainCard={cardBienvenida} />;
 }

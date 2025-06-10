@@ -23,7 +23,6 @@ const inputMeetingPlace = (
     label="Lugar de reunión:"
     name="meetingPlace"
     type="location"
-    // isLocationSelector
   />
 );
 
@@ -41,7 +40,6 @@ const inputAdditionalInfo = (
     label="Datos adicionales:"
     name="additionalInfo"
     type="textArea"
-    // isTextArea
   />
 );
 
