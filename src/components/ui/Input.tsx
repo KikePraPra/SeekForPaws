@@ -63,7 +63,12 @@ export default function Input(props: InputProps) {
             <img src={props.icon} alt="icon" className="mr-2 w-7 h-7" />
           )}
           <span>Adjuntar imagen</span>
-          <input id={props.name} name={props.name} type="file" className="hidden" />
+          <input
+            id={props.name}
+            name={props.name}
+            type="file"
+            className="hidden"
+          />
         </label>
       );
       break;
@@ -79,7 +84,7 @@ export default function Input(props: InputProps) {
   }
 
   return (
-    <div className="flex flex-col w-max font-fredoka">
+    <div className="flex flex-col w-max mx-auto font-fredoka">
       <label>{props.label}</label>
       {inputElement}
     </div>

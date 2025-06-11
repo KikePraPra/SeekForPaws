@@ -16,26 +16,23 @@ const btnGotIt = (
   />
 );
 
-
 const seeMore = {
-    name: "Coco",
-    image: "perroCoco.svg",
-    profilePic: "perroCoco.svg",
-    profileName: "Jorge Monge",
-    phone: "123456789",
-    state: "Extraviado",
-    lastPlace: "Parque central",
-    description: "Responde a coco, está esterilizado, tiene una mancha en el pecho",
-    date: "2025-06-08",
-    buttons: [
-        btnSeeIt, btnGotIt
-    ],
-}
+  name: "Coco",
+  image: "perroCoco.svg",
+  profilePic: "perroCoco.svg",
+  profileName: "Jorge Monge",
+  phone: "123456789",
+  state: "Extraviado",
+  lastPlace: "Parque central",
+  description:
+    "Responde a coco, está esterilizado, tiene una mancha en el pecho",
+  date: "2025-06-08",
+  buttons: [btnSeeIt, btnGotIt],
+};
 
 const btnBack = (
   <Button
     icon="/back.svg"
-    text=""
     style="w-7 h-5 translate-y-[-2rem] absolute right-7"
     onClick={() => history.back()}
   />

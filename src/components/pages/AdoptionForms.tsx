@@ -19,11 +19,7 @@ const inputContactTel = (
 );
 
 const inputMeetingPlace = (
-  <Input
-    label="Lugar de reunión:"
-    name="meetingPlace"
-    type="location"
-  />
+  <Input label="Lugar de reunión:" name="meetingPlace" type="location" />
 );
 
 const inputPetImage = (
@@ -36,11 +32,7 @@ const inputPetImage = (
 );
 
 const inputAdditionalInfo = (
-  <Input
-    label="Datos adicionales:"
-    name="additionalInfo"
-    type="textArea"
-  />
+  <Input label="Datos adicionales:" name="additionalInfo" type="textArea" />
 );
 
 const adoptionForms = {
@@ -59,8 +51,7 @@ const adoptionForms = {
 const btnBack = (
   <Button
     icon="/back.svg"
-    text=""
-   style="w-7 h-5 translate-y-[-2rem] absolute right-7"
+    style="w-7 h-5 translate-y-[-2rem] absolute right-7"
     onClick={() => history.back()}
   />
 );

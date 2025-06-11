@@ -2,7 +2,7 @@ import { useRouter } from "@tanstack/react-router";
 //clase para definir un boton - CTA
 interface ButtonProps {
   icon?: string;
-  text: string;
+  text?: string;
   style: string;
   to?: string;
   onClick?: () => void;

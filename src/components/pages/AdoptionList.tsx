@@ -3,11 +3,11 @@ import Container from "../ui/Container";
 
 const miniCardsList = [
   {
-    name: "Coco",
+    name: "Elvis",
     image: "perroCoco.svg",
-    state: "Extraviado",
-    lastPlace: "Parque central",
-    date: "2025-06-08",
+    state: "En adopción",
+    lastPlace: "Desamparados",
+    date: "2025-03-02",
     buttons: [
       <Button
         text="Ver más"
@@ -17,10 +17,10 @@ const miniCardsList = [
     ],
   },
   {
-    name: "Luna",
+    name: "Doby",
     image: "Tobby.svg",
-    state: "Extraviado",
-    lastPlace: "Zona industrial",
+    state: "En adopción",
+    lastPlace: "Cerro Bajo",
     date: "2025-06-07",
     buttons: [
       <Button
@@ -34,7 +34,7 @@ const miniCardsList = [
 
 const sliderProps = {
   image: "img-main.jpeg",
-  title: "Lista de Reportes",
+  title: "Lista de Adopción",
   miniCards: miniCardsList,
 };
 

@@ -9,14 +9,14 @@ const menuItems = [
     alt: "Cerrar sesión",
   },
   {
-    path: "/changeAccount",
+    path: "/",
     label: "Cambiar cuenta",
     icon: "/change_account.png",
     alt: "Cambiar cuenta",
   },
   { path: "/start",
     label: "Inicio",
-    icon: "/home.png",
+    icon: "/home.png", 
     alt: "Inicio" 
   }
 ];

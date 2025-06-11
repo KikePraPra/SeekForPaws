@@ -14,7 +14,7 @@ const btnPetsAdoption = (
   <Button
     text="Mascotas en adopción"
     style="pb-5.5 h-12 mb-5 w-80 rounded-2xl pt-2 bg-verde-oscuro text-white border-2 font-fredoka cursor-pointer border-verde-oscuro hover:bg-transparent hover:text-gris-oscuro duration-400"
-    to="/"
+    to="/adoptionList"
   />
 );
 

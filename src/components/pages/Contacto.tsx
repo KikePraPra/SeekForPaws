@@ -20,13 +20,13 @@ const btnSupport = (
 const cardContacto = {
   image: "img-main.jpeg",
   title: "Contáctanos",
+
   buttons: [btnComplaints, btnSupport],
 };
 
 const btnBack = (
   <Button
     icon="/back.svg"
-    text=""
     style="w-7 h-5 translate-y-[-2rem] absolute right-7"
     onClick={() => history.back()}
   />

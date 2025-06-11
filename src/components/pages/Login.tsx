@@ -11,19 +11,11 @@ const btnConfirmar = (
 );
 
 const inputUsername = (
-  <Input
-    label="Nombre de usuario"
-    name="username"
-    type="text"
-  />
+  <Input label="Nombre de usuario" name="username" type="text" />
 );
 
 const inputPassword = (
-  <Input
-    label="Contraseña"
-    name="password"
-    type="password"
-  />
+  <Input label="Contraseña" name="password" type="password" />
 );
 
 const login = {
@@ -31,18 +23,24 @@ const login = {
   image: "img-main.jpeg",
   inputs: [inputUsername, inputPassword],
   button: btnConfirmar,
-  text: <>¿No tienes una cuenta? <a className="text-amarillo visited:text-amarillo" href="/register">Regístrate</a></>
+  text: (
+    <>
+      ¿No tienes una cuenta?{" "}
+      <a className="text-amarillo visited:text-amarillo" href="/register">
+        Regístrate
+      </a>
+    </>
+  ),
 };
 
 const btnBack = (
   <Button
     icon="/back.svg"
-    text=""
     style="w-7 h-5 translate-y-[-2rem] absolute right-7"
     onClick={() => history.back()}
   />
-)
+);
 
 export default function Login() {
-  return <Container button={btnBack} form={login}/>;
+  return <Container button={btnBack} form={login} />;
 }

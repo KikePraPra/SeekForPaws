@@ -29,20 +29,14 @@ const inputPassword = (
 const registerForms = {
   title: "Registro",
   image: "img-main.jpeg",
-  inputs: [
-    inputEmail,
-    inputUserName,
-    inputContactTel,
-    inputPassword
-  ],
+  inputs: [inputEmail, inputUserName, inputContactTel, inputPassword],
   button: btnConfirm,
 };
 
 const btnBack = (
   <Button
     icon="/back.svg"
-    text=""
-   style="w-7 h-5 translate-y-[-2rem] absolute right-7"
+    style="w-7 h-5 translate-y-[-2rem] absolute right-7"
     onClick={() => history.back()}
   />
 );

@@ -4,7 +4,7 @@ import MiniCards from "./MiniCards";
 interface MiniCardsProps {
   name: string;
   image: string;
-  text: string;
+  state: string;
   lastPlace: string;
   date: string;
   buttons?: React.ReactNode[];
@@ -21,7 +21,6 @@ interface MainCardProps {
 export default function MainCard(props: MainCardProps) {
   let style = "flex flex-col pt-10";
   let contentSlider: React.ReactNode = null;
-
 
   if (props.title === "Inicio") {
     style = "flex flex-wrap justify-center max-w-md mx-auto pt-10";
@@ -51,8 +50,11 @@ export default function MainCard(props: MainCardProps) {
 
         <div className={`${style}`}>
           {props.text ? (
-            <p className="font-poppins w-5/6 mb-10 m-auto">{props.text}</p>) : ("")}
-          
+            <p className="font-poppins w-5/6 mb-10 m-auto">{props.text}</p>
+          ) : (
+            ""
+          )}
+
           {contentSlider}
 
           {/* Renderizar botones */}
@@ -60,7 +62,6 @@ export default function MainCard(props: MainCardProps) {
           {props.buttons && props.buttons[1] ? props.buttons[1] : ""}
           {props.buttons && props.buttons[2] ? props.buttons[2] : ""}
           {props.buttons && props.buttons[3] ? props.buttons[3] : ""}
-          
         </div>
       </article>
     </main>
