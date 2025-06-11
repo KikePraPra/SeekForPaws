@@ -11,11 +11,7 @@ const btnSend = (
 );
 
 const inputComplaints = (
-  <Input
-    label="Redacte su inquietud:"
-    name="additionalInfo"
-    type="textArea"
-  />
+  <Input label="Redacte su inquietud:" name="additionalInfo" type="textArea" />
 );
 
 const complaintsCard = {
@@ -29,7 +25,6 @@ const complaintsCard = {
 const btnBack = (
   <Button
     icon="/back.svg"
-    text=""
     style="w-7 h-5 translate-y-[-2rem] absolute right-7"
     onClick={() => history.back()}
   />
