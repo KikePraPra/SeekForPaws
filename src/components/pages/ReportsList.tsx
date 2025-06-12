@@ -1,5 +1,23 @@
 import Button from "../ui/Button";
+import FilterPanel from "../ui/FilterPanel";
 import Container from "../ui/Container";
+
+const groups = [
+  { label: "Estado", key: "state", options: ["Extraviado", "En adopción"] },
+  {
+    label: "Provincia",
+    key: "province",
+    options: [
+      "San Jose",
+      "Alajuela",
+      "Cartago",
+      "Heredia",
+      "Guanacaste",
+      "Puntarenas",
+      "Limon",
+    ],
+  },
+];
 
 const miniCardsList = [
   {
@@ -35,6 +53,7 @@ const miniCardsList = [
 const sliderProps = {
   image: "img-main.jpeg",
   title: "Lista de Reportes",
+  text: <FilterPanel groups={groups} onFilterChange={() => {}} />,
   miniCards: miniCardsList,
 };
 
