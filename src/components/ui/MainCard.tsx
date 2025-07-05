@@ -1,14 +1,12 @@
 import React from "react";
 import MiniCards from "./MiniCards";
+
 interface MiniCardsProps {
   name: string;
   image: string;
-  correo?: string;
-  clave?: string;
-  numero?: string;
-  state?: string;
-  lastPlace?: string;
-  date?: string;
+  state: string;
+  lastPlace: string;
+  date: string;
   buttons?: React.ReactNode[];
 }
 
