@@ -4,6 +4,7 @@ interface InputProps {
   name: string;
   type: string;
   icon?: string;
+  
 }
 
 const provinces = [
