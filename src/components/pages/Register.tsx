@@ -1,7 +1,6 @@
 import Button from "../ui/Button";
 import Input from "../ui/Input";
 import Container from "../ui/Container";
-
 const btnConfirm = (
   <Button
     text="Confirmar"
