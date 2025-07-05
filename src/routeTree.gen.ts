@@ -24,7 +24,6 @@ import { Route as ComplaintsImport } from './routes/complaints'
 import { Route as AdoptionListImport } from './routes/adoptionList'
 import { Route as AdoptionFormsImport } from './routes/adoptionForms'
 import { Route as AdoptionImport } from './routes/adoption'
-import { Route as AccountsImport } from './routes/accounts'
 import { Route as AboutUsImport } from './routes/aboutUs'
 import { Route as IndexImport } from './routes/index'
 
@@ -108,12 +107,6 @@ const AdoptionRoute = AdoptionImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
-const AccountsRoute = AccountsImport.update({
-  id: '/accounts',
-  path: '/accounts',
-  getParentRoute: () => rootRoute,
-} as any)
-
 const AboutUsRoute = AboutUsImport.update({
   id: '/aboutUs',
   path: '/aboutUs',
@@ -142,13 +135,6 @@ declare module '@tanstack/react-router' {
       path: '/aboutUs'
       fullPath: '/aboutUs'
       preLoaderRoute: typeof AboutUsImport
-      parentRoute: typeof rootRoute
-    }
-    '/accounts': {
-      id: '/accounts'
-      path: '/accounts'
-      fullPath: '/accounts'
-      preLoaderRoute: typeof AccountsImport
       parentRoute: typeof rootRoute
     }
     '/adoption': {
@@ -250,7 +236,6 @@ declare module '@tanstack/react-router' {
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/aboutUs': typeof AboutUsRoute
-  '/accounts': typeof AccountsRoute
   '/adoption': typeof AdoptionRoute
   '/adoptionForms': typeof AdoptionFormsRoute
   '/adoptionList': typeof AdoptionListRoute
@@ -269,7 +254,6 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/aboutUs': typeof AboutUsRoute
-  '/accounts': typeof AccountsRoute
   '/adoption': typeof AdoptionRoute
   '/adoptionForms': typeof AdoptionFormsRoute
   '/adoptionList': typeof AdoptionListRoute
@@ -289,7 +273,6 @@ export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
   '/aboutUs': typeof AboutUsRoute
-  '/accounts': typeof AccountsRoute
   '/adoption': typeof AdoptionRoute
   '/adoptionForms': typeof AdoptionFormsRoute
   '/adoptionList': typeof AdoptionListRoute
@@ -310,7 +293,6 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/aboutUs'
-    | '/accounts'
     | '/adoption'
     | '/adoptionForms'
     | '/adoptionList'
@@ -328,7 +310,6 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/aboutUs'
-    | '/accounts'
     | '/adoption'
     | '/adoptionForms'
     | '/adoptionList'
@@ -346,7 +327,6 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/aboutUs'
-    | '/accounts'
     | '/adoption'
     | '/adoptionForms'
     | '/adoptionList'
@@ -366,7 +346,6 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutUsRoute: typeof AboutUsRoute
-  AccountsRoute: typeof AccountsRoute
   AdoptionRoute: typeof AdoptionRoute
   AdoptionFormsRoute: typeof AdoptionFormsRoute
   AdoptionListRoute: typeof AdoptionListRoute
@@ -385,7 +364,6 @@ export interface RootRouteChildren {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutUsRoute: AboutUsRoute,
-  AccountsRoute: AccountsRoute,
   AdoptionRoute: AdoptionRoute,
   AdoptionFormsRoute: AdoptionFormsRoute,
   AdoptionListRoute: AdoptionListRoute,
@@ -413,7 +391,6 @@ export const routeTree = rootRoute
       "children": [
         "/",
         "/aboutUs",
-        "/accounts",
         "/adoption",
         "/adoptionForms",
         "/adoptionList",
@@ -434,9 +411,6 @@ export const routeTree = rootRoute
     },
     "/aboutUs": {
       "filePath": "aboutUs.tsx"
-    },
-    "/accounts": {
-      "filePath": "accounts.tsx"
     },
     "/adoption": {
       "filePath": "adoption.tsx"
