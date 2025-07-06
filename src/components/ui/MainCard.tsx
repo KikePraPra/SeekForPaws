@@ -2,17 +2,16 @@ import React from "react";
 import MiniCards from "./MiniCards";
 
 interface MiniCardsProps {
-name: string;
-image: string;
-correo?: string;
-clave?: string;
-numero?: string;
-state?: string;
-lastPlace?: string;
-date?: string;
-buttons?: React.ReactNode[];
+  name: string;
+  image: string;
+  correo?: string;
+  clave?: string;
+  numero?: string;
+  state?: string;
+  lastPlace?: string;
+  date?: string;
+  buttons?: React.ReactNode[];
 }
-
 
 interface MainCardProps {
   image: string;
@@ -54,7 +53,9 @@ export default function MainCard(props: MainCardProps) {
 
         <div className={`${style}`}>
           {props.text ? (
-            <div className="font-poppins w-5/6 mb-10 m-auto">{props.text}</div>
+            <div className="font-poppins max-w-md mx-auto mb-10">
+              {props.text}
+            </div>
           ) : (
             ""
           )}

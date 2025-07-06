@@ -1,12 +1,14 @@
+import { useEffect, useState, useCallback } from "react";
 import Button from "../ui/Button";
 import FilterPanel from "../ui/FilterPanel";
 import Container from "../ui/Container";
 
+// Grupos de filtros, las claves deben coincidir con las propiedades en miniCardsList
 const groups = [
-  { label: "Estado", key: "state", options: ["Extraviado", "En adopción"] },
+  { label: "Estado", key: "state", options: ["adoptado", "en adopción"] }, // valores en minúscula para coincidir con datos
   {
     label: "Provincia",
-    key: "province",
+    key: "lastPlace", // esta es la clave que usaremos en miniCardsList para filtrar por provincia
     options: [
       "San Jose",
       "Alajuela",
@@ -19,44 +21,7 @@ const groups = [
   },
 ];
 
-const miniCardsList = [
-  {
-    name: "Elvis",
-    image: "perroCoco.svg",
-    state: "En adopción",
-    lastPlace: "Desamparados",
-    date: "2025-03-02",
-    buttons: [
-      <Button
-        text="Ver más"
-        style="pb-5.5 h-12 w-full rounded-2xl pt-2 bg-verde-oscuro text-white border-2 font-fredoka cursor-pointer border-verde-oscuro hover:bg-transparent hover:text-gris-oscuro duration-400"
-        to="/seeMore"
-      />,
-    ],
-  },
-  {
-    name: "Doby",
-    image: "Tobby.svg",
-    state: "En adopción",
-    lastPlace: "Cerro Bajo",
-    date: "2025-06-07",
-    buttons: [
-      <Button
-        text="Ver más"
-        style="pb-5.5 h-12 w-full rounded-2xl pt-2 bg-transparent text-gris-oscuro border-2 font-fredoka cursor-pointer border-verde-oscuro bg-verde-oscuro text-white duration-400 hover:bg-transparent hover:text-gris-oscuro"
-        to="/seeMore"
-      />,
-    ],
-  },
-];
-
-const sliderProps = {
-  image: "img-main.jpeg",
-  title: "Lista de Adopción",
-  text: <FilterPanel groups={groups} onFilterChange={() => {}} />,
-  miniCards: miniCardsList,
-};
-
+// Botón para regresar
 const btnBack = (
   <Button
     icon="/back.svg"
@@ -65,6 +30,81 @@ const btnBack = (
   />
 );
 
-export default function ReportList() {
+export default function AdoptionList() {
+  const [miniCardsList, setMiniCardsList] = useState<any[]>([]);
+  const [filteredCards, setFilteredCards] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    fetch("http://backforpaws.test/api/v1/adoption/all")
+      .then((res) => {
+        if (!res.ok) throw new Error("No se pudo cargar la información");
+        return res.json();
+      })
+      .then((data) => {
+        const api_base = "http://backforpaws.test/storage/";
+
+        const cards = data.map((adoption: any) => {
+          const rawDate = new Date(adoption.created_at);
+          const shortDate = rawDate.toLocaleDateString("es-ES", {
+            day: "2-digit",
+            month: "short",
+            year: "numeric",
+          });
+
+          return {
+            image: adoption.pet_image
+              ? `${api_base}${adoption.pet_image}`
+              : undefined,
+            name: adoption.pet_name,
+            state: adoption.pet_state.toLowerCase(), // convierte a minúscula para coincidir con options
+            lastPlace: adoption.meeting_place, // la provincia
+            date: shortDate,
+            buttons: [
+              <Button
+                key={adoption.id}
+                text="Ver más"
+                style="pb-5.5 h-12 w-full rounded-2xl pt-2 bg-verde-oscuro text-white border-2 font-fredoka cursor-pointer border-verde-oscuro hover:bg-transparent hover:text-gris-oscuro duration-400"
+                to={`/seeMore/${adoption.id}`}
+              />,
+            ],
+          };
+        });
+
+        setMiniCardsList(cards);
+        setFilteredCards(cards);
+        setLoading(false);
+      })
+      .catch((err) => {
+        setError(err.message || "Error al cargar los datos");
+        setLoading(false);
+      });
+  }, []);
+
+  // Maneja los cambios en filtros
+  const handleFilterChange = useCallback(
+    (filters: { [key: string]: string[] }) => {
+      const filtered = miniCardsList.filter((card) =>
+        Object.entries(filters).every(([key, selectedOptions]) => {
+          if (selectedOptions.length === 0) return true;
+          return selectedOptions.includes(card[key]);
+        })
+      );
+      setFilteredCards(filtered);
+    },
+    [miniCardsList]
+  );
+
+  const sliderProps = {
+    image: "img-main.jpeg",
+    title: "Lista de Adopción",
+    text: <FilterPanel groups={groups} onFilterChange={handleFilterChange} />,
+    miniCards: filteredCards,
+  };
+
+  if (loading) return <div>Cargando...</div>;
+  if (error) return <div className="text-red-500">{error}</div>;
+
   return <Container button={btnBack} mainCard={sliderProps} />;
 }

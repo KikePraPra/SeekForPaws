@@ -1,106 +1,122 @@
-// Importación de hooks de React y componentes personalizados
-import { useEffect, useState, useCallback } from "react";
-import Button from "../ui/Button"; // Botón reutilizable
-import FilterPanel from "../ui/FilterPanel"; // Componente para aplicar filtros
-import Container from "../ui/Container"; // Componente principal que renderiza la vista
+import { useEffect, useState, useCallback } from "react"; // Importa hooks de React para estado, efectos y memoización
+import Button from "../ui/Button"; // Componente botón reutilizable
+import FilterPanel from "../ui/FilterPanel"; // Componente para mostrar filtros
+import Container from "../ui/Container"; // Contenedor principal de la UI
 
-// Definición del grupo de filtros disponibles
+// Definición de los grupos de filtros que estarán disponibles en la interfaz
 const groups = [
   {
-    label: "Estado", // Título del grupo de filtro
-    key: "state", // Clave que se usará para filtrar
-    options: ["Perdido", "Encontrado"], // Opciones disponibles
+    label: "Estado", // Título del filtro
+    key: "state",   // Clave para filtrar por este campo
+    options: ["Perdido", "Encontrado"], // Opciones disponibles para filtrar
+  },
+  {
+    label: "Provincia",
+    key: "lastPlace", // Clave para filtrar por provincia, debe coincidir con la propiedad del objeto de datos
+    options: [
+      "San José",
+      "Alajuela",
+      "Cartago",
+      "Heredia",
+      "Guanacaste",
+      "Puntarenas",
+      "Limón",
+    ],
   },
 ];
 
-// Botón de regreso que usa el historial del navegador
+// Definición del botón de volver a la página anterior usando el historial del navegador
 const btnBack = (
   <Button
     icon="/back.svg" // Icono del botón
-    style="w-7 h-5 translate-y-[-2rem] absolute right-7" // Estilos de Tailwind CSS
-    onClick={() => history.back()} // Acción al hacer clic
+    style="w-7 h-5 translate-y-[-2rem] absolute right-7" // Clases Tailwind para posicionar y tamaño
+    onClick={() => history.back()} // Acción para ir atrás al hacer clic
   />
 );
 
-// Componente principal que representa la página de reportes
+// Componente principal que muestra la lista de reportes con filtros
 export default function ReportList() {
-  // Estados para manejar la información y la UI
-  const [miniCardsList, setMiniCardsList] = useState<any[]>([]); // Lista completa de reportes
-  const [filteredCards, setFilteredCards] = useState<any[]>([]); // Lista filtrada según filtros
-  const [loading, setLoading] = useState(true); // Indica si los datos están cargando
-  const [error, setError] = useState(""); // Mensaje de error si falla la carga
+  // Estado para guardar la lista completa de reportes obtenidos del backend
+  const [miniCardsList, setMiniCardsList] = useState<any[]>([]);
+  // Estado para guardar la lista de reportes ya filtrada
+  const [filteredCards, setFilteredCards] = useState<any[]>([]);
+  // Estado para controlar la carga de datos
+  const [loading, setLoading] = useState(true);
+  // Estado para almacenar mensajes de error si ocurren
+  const [error, setError] = useState("");
 
-  // Efecto que se ejecuta al montar el componente para cargar los datos
+  // useEffect para cargar datos una vez que el componente se monta
   useEffect(() => {
-    fetch("http://backforpaws.test/api/v1/report/all") // Llama a la API
+    fetch("http://backforpaws.test/api/v1/report/all") // Llamada a la API para obtener reportes
       .then((res) => {
-        if (!res.ok) throw new Error("No se pudo cargar la información"); // Valida la respuesta
+        if (!res.ok) throw new Error("No se pudo cargar la información"); // Si la respuesta no es correcta, lanza error
         return res.json(); // Convierte la respuesta a JSON
       })
       .then((data) => {
-        const api_base = "http://backforpaws.test/storage/"; // Ruta base de imágenes
+        const api_base = "http://backforpaws.test/storage/"; // URL base para las imágenes
 
-        // Transforma cada reporte en un objeto simplificado
+        // Mapeo de cada reporte para transformarlo a un formato que la UI usará
         const cards = data.map((report: any) => {
-          const rawDate = new Date(report.created_at); // Fecha en formato Date
+          const rawDate = new Date(report.created_at); // Convierte la fecha cruda a objeto Date
           const shortDate = rawDate.toLocaleDateString("es-ES", {
             day: "2-digit",
             month: "short",
             year: "numeric",
-          }); // Formatea la fecha
+          }); // Formatea la fecha en formato corto y local español
 
-          // Retorna un objeto con los datos necesarios
           return {
             image: report.pet_image
-              ? `${api_base}${report.pet_image}`
+              ? `${api_base}${report.pet_image}` // Si hay imagen, arma la URL completa
               : undefined,
             name: report.pet_name,
             state: report.pet_state,
-            lastPlace: report.last_place,
-            date: shortDate,
+            lastPlace: report.last_place, // Lugar, usado también para filtro de provincia
+            date: shortDate, // Fecha formateada
           };
         });
 
-        // Guarda los datos en los estados
-        setMiniCardsList(cards); // Lista original
-        setFilteredCards(cards); // Lista filtrada (por defecto igual)
-        setLoading(false); // Termina la carga
+        // Guarda la lista original y la filtrada (inicialmente sin filtro)
+        setMiniCardsList(cards);
+        setFilteredCards(cards);
+        setLoading(false); // Marca como que terminó la carga
       })
       .catch((err) => {
-        // Si hay error, lo guarda en el estado
+        // En caso de error guarda el mensaje y marca carga terminada
         setError(err.message || "Error al cargar los datos");
         setLoading(false);
       });
-  }, []); // Se ejecuta una vez al montar el componente
+  }, []); // El arreglo vacío asegura que esto solo corra una vez al montar
 
-  // Función para manejar los filtros seleccionados
+  // Función que maneja los cambios en los filtros
   const handleFilterChange = useCallback(
     (filters: { [key: string]: string[] }) => {
-      // Filtra la lista según los filtros seleccionados
+      // Filtra la lista original según los filtros aplicados
       const filtered = miniCardsList.filter((card) => {
         return Object.entries(filters).every(([key, selectedOptions]) => {
-          if (selectedOptions.length === 0) return true; // No hay filtros aplicados
-          return selectedOptions.includes(card[key]); // Compara con el valor del card
+          if (selectedOptions.length === 0) return true; // Si no hay filtros para esta clave, pasa todos
+          return selectedOptions.includes(card[key]); // Si el valor del card está en los filtros seleccionados
         });
       });
 
-      setFilteredCards(filtered); // Actualiza la lista filtrada
+      // Actualiza la lista de reportes mostrada con los filtrados
+      setFilteredCards(filtered);
     },
-    [miniCardsList] // Dependencia: se actualiza si cambia la lista original
+    [miniCardsList] // Solo recalcula si cambia la lista original de reportes
   );
 
-  // Propiedades que se pasan al componente Container
+  // Props que se pasan al componente Container para renderizar la UI
   const sliderProps = {
-    image: "img-main.jpeg", // Imagen de cabecera
-    title: "Lista de Reportes", // Título
-    text: <FilterPanel groups={groups} onFilterChange={handleFilterChange} />, // Filtro embebido
-    miniCards: filteredCards, // Tarjetas filtradas que se mostrarán
+    image: "img-main.jpeg", // Imagen principal de encabezado
+    title: "Lista de Reportes", // Título visible
+    text: <FilterPanel groups={groups} onFilterChange={handleFilterChange} />, // Panel de filtros
+    miniCards: filteredCards, // Lista filtrada para mostrar
   };
 
-  // Renderiza diferentes estados según la situación
-  if (loading) return <div>Cargando...</div>; // Mientras carga
-  if (error) return <div className="text-red-500">{error}</div>; // Si hay error
+  // Mientras se carga, muestra mensaje de carga
+  if (loading) return <div>Cargando...</div>;
+  // Si hubo error, muestra el mensaje
+  if (error) return <div className="text-red-500">{error}</div>;
 
-  // Renderiza el componente principal con los props necesarios
+  // Renderiza el contenedor principal con botón atrás y la lista de reportes filtrada
   return <Container button={btnBack} mainCard={sliderProps} />;
 }
