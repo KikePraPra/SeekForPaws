@@ -60,15 +60,7 @@ export default function AdoptionList() {
             name: adoption.pet_name,
             state: adoption.pet_state.toLowerCase(), // convierte a minúscula para coincidir con options
             lastPlace: adoption.meeting_place, // la provincia
-            date: shortDate,
-            buttons: [
-              <Button
-                key={adoption.id}
-                text="Ver más"
-                style="pb-5.5 h-12 w-full rounded-2xl pt-2 bg-verde-oscuro text-white border-2 font-fredoka cursor-pointer border-verde-oscuro hover:bg-transparent hover:text-gris-oscuro duration-400"
-                to={`/seeMore/${adoption.id}`}
-              />,
-            ],
+            date: shortDate,    
           };
         });
 
