@@ -24,6 +24,14 @@ const cardReports = {
   buttons: [btnRegisterReport, btnViewReports],
 };
 
+const btnBack = (
+  <Button
+    icon="/back.svg"
+    style="w-7 h-5 translate-y-[-2rem] absolute right-7"
+    onClick={() => history.back()}
+  />
+);
+
 export default function Reports() {
-  return <Container button={<BurgerMenu />} mainCard={cardReports} />;
+  return <Container button={btnBack} mainCard={cardReports} />;
 }

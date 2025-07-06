@@ -24,6 +24,14 @@ const cardAdoption = {
   buttons: [btnRegisterAdoption, btnPetsAdoption],
 };
 
+const btnBack = (
+  <Button
+    icon="/back.svg"
+    style="w-7 h-5 translate-y-[-2rem] absolute right-7"
+    onClick={() => history.back()}
+  />
+);
+
 export default function Adoption() {
-  return <Container button={<BurgerMenu />} mainCard={cardAdoption} />;
+  return <Container button={btnBack} mainCard={cardAdoption} />;
 }

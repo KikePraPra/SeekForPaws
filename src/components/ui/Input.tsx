@@ -4,6 +4,8 @@ interface InputProps {
   name: string;
   type: string;
   icon?: string;
+  value?: string;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => void;
 }
 
 const provinces = [
@@ -29,6 +31,8 @@ export default function Input(props: InputProps) {
           name={props.name}
           className="rounded-lg border-2 border-verde-claro w-80 mt-4.5 pl-2 pt-2 text-lg text-semibold"
           rows={4}
+          value={props.value}
+          onChange={props.onChange}
         ></textarea>
       );
       break;
@@ -40,7 +44,10 @@ export default function Input(props: InputProps) {
           className="rounded-lg border-2 border-verde-claro h-12 w-80 mt-4.5
         text-left pl-2 text-lg text-semibold focus:outline-none"
           value={selectedProvinse}
-          onChange={(e) => setSelectedProvinse(e.target.value)}
+          onChange={(e) => {
+            setSelectedProvinse(e.target.value);
+            if (props.onChange) props.onChange(e);
+          }}
         >
           <option value="">Seleccione provincia</option>
           {provinces.map((prov) => (
@@ -68,6 +75,7 @@ export default function Input(props: InputProps) {
             name={props.name}
             type="file"
             className="hidden"
+            onChange={props.onChange as any}
           />
         </label>
       );
@@ -79,7 +87,9 @@ export default function Input(props: InputProps) {
           name={props.name}
           type={props.type}
           className="rounded-lg border-2 border-verde-claro h-12 w-80 mt-4.5 text-left pl-2 text-lg text-semibold"
-        ></input>
+          value={props.value}
+          onChange={props.onChange}
+        />
       );
   }
 

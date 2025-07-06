@@ -2,13 +2,9 @@ import { useState } from "react";
 import { useRouter } from "@tanstack/react-router";
 
 const menuItems = [
-  {
-    path: "/",
-    label: "Cerrar sesión",
-    icon: "/logout.png",
-    alt: "Cerrar sesión",
-  },
+  { path: "/accounts", label: "Cuentas", icon: "/accounts.png", alt: "Cuentas" },
   { path: "/start", label: "Inicio", icon: "/home.png", alt: "Inicio" },
+  { path: "/", label: "Cerrar sesión", icon: "/logout.png", alt: "Cerrar sesión", },
 ];
 
 export default function BurgerMenu() {
@@ -35,11 +31,10 @@ export default function BurgerMenu() {
 
       {/*menu desplegable*/}
       <div
-        className={`fixed top-0 right-0 w-60 h-50 bg-verde-muy-oscuro text-white z-50 rounded-bl-2xl p-4 transform transition-all duration-300 ${
-          open
+        className={`fixed top-0 right-0 w-60 h-65 bg-verde-muy-oscuro text-white z-50 rounded-bl-2xl p-4 transform transition-all duration-300 ${open
             ? "translate-x-0 opacity-100"
             : "translate-x-full opacity-0 pointer-events-none"
-        }`}
+          }`}
       >
         <ul className="mt-15 space-y-4 text-base">
           {menuItems.map(({ path, label, icon, alt }) => (
