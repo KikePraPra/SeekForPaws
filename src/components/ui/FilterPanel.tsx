@@ -50,10 +50,10 @@ export default function FilterPanel({ groups, onFilterChange }: Props) {
       </button>
 
       {open && (
-        <div className=" border border-gray-300 rounded-lg bg-white p-4 ">
+        <div className="border border-gray-300 rounded-lg bg-white p-4">
           {groups.map(({ label, key, options }) => (
             <section key={key} className="mb-4">
-              <p className="text-base font-semibold mb-2 ">{label}</p>
+              <p className="text-base font-semibold mb-2">{label}</p>
               <ul className="space-y-2">
                 {options.map((option) => (
                   <li key={option}>

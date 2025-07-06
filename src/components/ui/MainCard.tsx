@@ -54,7 +54,7 @@ export default function MainCard(props: MainCardProps) {
 
         <div className={`${style}`}>
           {props.text ? (
-            <p className="font-poppins w-5/6 mb-10 m-auto">{props.text}</p>
+            <div className="font-poppins w-5/6 mb-10 m-auto">{props.text}</div>
           ) : (
             ""
           )}
