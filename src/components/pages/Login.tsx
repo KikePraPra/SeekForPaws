@@ -42,7 +42,7 @@ export default function Login() {
   );
 
   const inputUsername = (
-    <div onChange={(e) => setError("")}>
+    <div>
       <Input
         label="Nombre de usuario"
         name="username"
@@ -50,13 +50,16 @@ export default function Login() {
         // @ts-ignore
         value={username}
         // @ts-ignore
-        onChange={(e) => setUsername(e.target.value)}
+        onChange={(e) => {
+          setUsername(e.target.value);
+          setError("");
+        }}
       />
     </div>
   );
 
   const inputPassword = (
-    <div onChange={(e) => setError("")}>
+    <div>
       <Input
         label="Contraseña"
         name="password"
@@ -64,7 +67,10 @@ export default function Login() {
         // @ts-ignore
         value={password}
         // @ts-ignore
-        onChange={(e) => setPassword(e.target.value)}
+        onChange={(e) => {
+          setPassword(e.target.value);
+          setError("");
+        }}
       />
     </div>
   );

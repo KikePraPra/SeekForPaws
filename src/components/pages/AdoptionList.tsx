@@ -58,7 +58,7 @@ export default function AdoptionList() {
               ? `${api_base}${adoption.pet_image}`
               : undefined,
             name: adoption.pet_name,
-            state: adoption.pet_state.toLowerCase(), // convierte a minúscula para coincidir con options
+            state: adoption.pet_state.replace("_", " ").toLowerCase(), // convierte a minúscula para coincidir con options
             lastPlace: adoption.meeting_place, // la provincia
             date: shortDate,    
           };
